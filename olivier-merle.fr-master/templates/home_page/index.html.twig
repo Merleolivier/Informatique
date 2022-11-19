@@ -1,0 +1,241 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+	<section class="banner banner-image">
+		<img src="{{asset('assets/images/parts/headerIMG.jpg')}}" alt="" data-cover-image="true"/>
+		<div class="theme-back"></div>
+		<div class="pos-center text-center col-12 text-white">
+			<div class="banner-title res-text-xxl">Dépannage informatique</div>
+			<div class="banner-subtitle res-text-md">Nos prestations sont effectuées par un informaticien professionnel qui effectue
+				<br/>des interventions à domicile, à distance, sur site et en atelier dans la ville de Paris et dans toute sa périphérie.
+			</div>
+		</div>
+	</section>
+	<section class="clearfix solid-border-top alt-bg">
+		<div class="container hyped-block">
+			<div class="row cols-md rows-md">
+				<div class="md-col-6">
+					<div class="row cols-md rows-md">
+						<div class="sm-col-6">
+							<div class="price-block short" data-inview-showup="showup-scale">
+								<a href="services.html" class="price-image">
+									<img class="active-image" src="" alt=""/>
+									<img class="image" src="" alt=""/>
+								</a>
+								<div class="price-title" style="font-size: 25px;">Installations
+									<br/>de matériels</div>
+								<a class="text-medium simple-link text-upper" href="/services">En savoir plus</a>
+							</div>
+						</div>
+						<div class="sm-col-6">
+							<div class="price-block short" data-inview-showup="showup-scale">
+								<a href="services.html" class="price-image"></a>
+								<div class="price-title" style="font-size: 25px;">Maintenance & Dépannage</div>
+								<a class="text-medium simple-link text-upper" href="/services">En savoir plus</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="md-col-6">
+					<div class="row cols-md rows-md">
+						<div class="sm-col-6">
+							<div class="price-block short" data-inview-showup="showup-scale">
+								<a href="services.html" class="price-image">
+									<img class="active-image" src="" alt=""/>
+									<img class="image" src="" alt=""/>
+								</a>
+								<div class="price-title" style="font-size: 25px;">Protections de
+									<br/>vos données</div>
+								<a class="text-medium simple-link text-upper" href="/services">En savoir plus</a>
+							</div>
+						</div>
+						<div class="sm-col-6">
+							<div class="price-block short" data-inview-showup="showup-scale">
+								<a href="services.html" class="price-image">
+									<img class="active-image" src="" alt=""/>
+									<img class="image" src="" alt=""/>
+								</a>
+								<div class="price-title" style="font-size: 25px;">Montage
+									<br/>d'ordinateur fixe</div>
+								<a class="text-medium simple-link text-upper" href="/services">En savoir plus</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="solid-section" data-inview-showup="showup-translate-up">
+		<div class="container">
+			<div class="row cols-xl rows-lg">
+				<div class="md-col-6 md-push-6 text-center md-text-left">
+					<h2 class="text-upper text-semibold">Notre service</h2>
+					<p>Votre ordinateur n'en fait qu'à sa tête ? Virus, pannes, lenteur, messages d'erreur, déconnexions... un jour ou l'autre, tout ordinateur a un souci.
+						<br/><br/>Parfois sans conséquence grave mais souvent c'est insupportable au quotidien voire même la catastrophe!
+						<b>Mais pas de panique, je suis là pour vous aider</B>.
+						<br/><br/>Savez-vous que la majorité des dépannages informatiques ne nécessite pas d'intervention coûteuse ? Ni-même qu'un dépanneur y passe des heures entières. C'est pourquoi je propose un tarif cohérent parmi les moins chers avec une formule simple et sans mauvaise surprise.</p>
+				</div>
+				<div class="md-col-6 md-pull-6 md-fix-container">
+					<img class="image" src="{{asset('assets/images/parts/serviceIMG.jpg')}}" style="border-radius: 10%;" alt=""/>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="main-bg decorated-bg text-center tight solid-section">
+		<div class="container">
+			<div class="row cols-md rows-xl" data-inview-showup="showup-translate-up">
+				<div class="sm-col-4">
+					<div class="counter">
+						<div class="counter-title text-upper">Clients satisfaits</div>
+						<div class="counter-value" data-waypoint-counter="130">130</div>
+					</div>
+				</div>
+				<div class="sm-col-4">
+					<div class="counter">
+						<div class="counter-title text-upper">Années d'expertises</div>
+						<div class="counter-value" data-waypoint-counter="6">6</div>
+					</div>
+				</div>
+				<div class="sm-col-4">
+					<div class="counter">
+						<div class="counter-title text-upper">PRODUITS RECYCLÉS</div>
+						<div class="counter-value" data-waypoint-counter="68">68</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="with-bg solid-section">
+		<div class="fix-image-wrap" data-image-src="{{asset('assets/images/parts/procedureIMG.jpg')}}" data-parallax="scroll"></div>
+		<div class="theme-back inner-shadow"></div>
+		<div class="container text-center">
+			<div class="section-head text-center container-md">
+				<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Procédure de réparation</h2>
+				<p data-inview-showup="showup-translate-left">Découvrez notre fonctionnement et notre procédure de réparation complète.</p>
+			</div>
+			<div class="service-steps text-upper" data-inview-showup="showup-scale">
+				<div class="step">
+					<span class="step-number">1</span>Récupération</div>
+				<div class="step">
+					<span class="step-number">2</span>Diagnostique & Devis</div>
+				<div class="step">
+					<span class="step-number active">3</span>Réparation</div>
+				<div class="step">
+					<span class="step-number">4</span>Retour au client</div>
+			</div>
+		</div>
+	</section>
+	<section class="content-section">
+		<div class="container">
+			<div class="section-head text-center container-md">
+				<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">L'avis de nos clients</h2>
+				<p data-inview-showup="showup-translate-left">Découvrez les avis de nos précédents clients</p>
+			</div>
+			<div class="owl-carousel" data-inview-showup="showup-translate-up" data-owl-dots="true">
+				{% for avisData in avis %}
+					<div class="item">
+						<div class="simple-testimonial text-center">
+							<div class="tt-title">{{ avisData.title }}</div>
+							<div class="tt-rating">
+								{% set supplements =  5 - avisData.stars %}
+								{% for i in 1..avisData.stars %}
+									<i class="tt-star fa fa-star" aria-hidden="true"></i>
+								{% endfor %}
+								{% if supplements != 0 %}
+									{% for i in 1..supplements %}
+										<i class="tt-star fa fa-star" style="color: black;" aria-hidden="true"></i>
+									{% endfor %}
+								{% endif %}
+							</div>
+							<div class="tt-content">
+								<div class="tt-quote">&#8220;</div>
+								{{ avisData.text }}
+							</div>
+							<div class="tt-icon"><img src="./assets/images/icons/notebook-sm.png" alt=""></div>
+							<div class="pexx-tt-user-title">{{ avisData.username }}</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<div class="solid-section muted-bg">
+		<div class="container">
+			<div class="row cols-lg rows-lg">
+				<div class="sm-col-6">
+					<section data-inview-showup="showup-translate-right">
+						<h2 class="text-upper">Contactez-moi</h2>
+						<p class="offs-lg">Un ordinateur défectueux ? Une panne, une mise à jour, une réinstallation de Windows, une sauvegarde de données...
+						</p>
+						<div class="rows-md">
+							<div class="row cols-md rows-md">
+								<div class="md-col-6">
+									<div class="info-item">
+										<div class="icon"><img src="./assets/images/icons/side/phone.png" alt=""/></div>
+										<div class="text">(+33) 7 56 84 24 42</div>
+									</div>
+								</div>
+								<!--
+								<div class="md-col-6">
+									<div class="info-item">
+										<div class="icon"><img src="./assets/images/icons/side/email.png" alt=""/></div>
+										<div class="text">contact@informatique-paris.fr</div>
+									</div>
+								</div>
+								-->
+							</div>
+						</div>
+					</section>
+				</div>
+				<!--
+				<div class="sm-col-6">
+					<section class="block-md sm-fix-container" data-inview-showup="showup-translate-left">
+						<h5 class="offs-md">Envoyez moi un message</h5>
+						<form method="post" action="contact/send">
+							<div class="field-group">
+								<div class="field-wrap">
+									<input class="field-control" name="name" placeholder="Nom & Prénom" required="required"/>
+									<span class="field-back"></span>
+								</div>
+							</div>
+							<div class="field-group">
+								<div class="field-wrap">
+									<input class="field-control" name="email" type="email" placeholder="Email" required="required"/>
+									<span class="field-back"></span>
+								</div>
+							</div>
+							<div class="field-group">
+								<div class="field-wrap">
+									<input class="field-control" name="telephone" placeholder="Numéro de téléphone" required="required"/>
+									<span class="field-back"></span>
+								</div>
+							</div>
+							<div class="field-group">
+								<div class="field-wrap">
+									<textarea class="field-control" name="message" placeholder="Décrivez votre problème..." required="required"></textarea>
+									<span class="field-back"></span>
+								</div>
+							</div>
+							<div class="btn-block">
+								<button class="btn text-upper ajax-disabled" type="submit">
+									Envoyer mon message
+								</button>
+							</div>
+						</form>
+					</section>
+				</div>
+				-->
+			</div>
+		</div>
+	</div>
+	<a href="#" class="scroll-top disabled">
+		<i class="fas fa-angle-up" aria-hidden="true"></i>
+	</a>
+	<div class="loader-block">
+		<div class="loader-back alt-bg"></div>
+		<div class="loader-image"><img class="image" src="./assets/images/parts/loader.gif" alt=""/></div>
+	</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Contactez-nous
+{% endblock %}
+
+{% block body %}
+	<section class="with-bg solid-section">
+		<div class="fix-image-wrap" data-image-src="{{asset('assets/images/parts/contact.jpg')}}" data-parallax="scroll"></div>
+		<div class="theme-back"></div>
+		<div class="container page-info">
+			<div class="section-alt-head container-md">
+				<h1 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Contactez-nous</h1>
+				<p data-inview-showup="showup-translate-left">Un ordinateur défectueux ? Une panne, une mise à jour, une réinstallation de Windows, une sauvegarde de données...</p>
+			</div>
+		</div>
+	</section>
+	<section class="content-section">
+		<div class="container">
+			<div class="section-head text-center container-md">
+				<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Expliquez nous votre problème</h2>
+				<p data-inview-showup="showup-translate-left">Contactez-nous pour nous expliquer votre problème, afin d'établir un devis.</p>
+			</div>
+			<form method="post" action="contact/send" class="md-col-8 md-col-offs-2" data-inview-showup="showup-translate-down">
+				<div class="field-group">
+					{% for flashMessage in app.session.flashbag.get('notice') %}
+
+						{{ flashMessage|raw}}
+
+					{% endfor %}
+					<div class="field-wrap">
+						<input class="field-control" name="name" placeholder="Nom & Prénom"/>
+						<span class="field-back"></span>
+					</div>
+				</div>
+				<div class="field-group">
+					<div class="field-wrap">
+						<input class="field-control" name="email" type="email" placeholder="Email"/>
+						<span class="field-back"></span>
+					</div>
+				</div>
+				<div class="field-group">
+					<div class="field-wrap">
+						<input class="field-control" name="telephone" placeholder="Numéro de téléphone"/>
+						<span class="field-back"></span>
+					</div>
+				</div>
+				<div class="field-group">
+					<div class="field-wrap">
+						<textarea class="field-control" name="message" placeholder="Décrivez votre problème"></textarea>
+						<span class="field-back"></span>
+					</div>
+				</div>
+				<div class="btn-block text-center">
+					<button class="btn text-upper ajax-disabled" type="submit">
+						Envoyer mon message
+					</button>
+				</div>
+			</form>
+		</div>
+	</section>
+{% endblock %}

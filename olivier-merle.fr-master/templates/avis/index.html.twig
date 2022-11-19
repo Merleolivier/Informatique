@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Laisser un avis
+{% endblock %}
+
+{% block body %}
+	<section class="shift-xl content-section">
+		<div class="container">
+			<div class="section-head text-center container-md">
+				<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Laisser un avis</h2>
+				<p data-inview-showup="showup-translate-left">Envie de laisser votre avis sur cette réparation ?</p>
+			</div>
+			<div class="medium-container">
+				<form class="new-ticket" method="post" action="/aviscreate">
+					<div class=" offs-lg" data-inview-showup=" showup-translate-bottom">
+						<div class="field-group">
+							<div class="field-wrap">
+								<input class="field-control" name="title" placeholder="Titre de votre avis" required="required"/>
+								<span class="field-back"></span>
+							</div>
+						</div>
+						<div class="field-group">
+							<div class="field-wrap">
+								<textarea class="field-control" name="description" placeholder="Décrivez votre expérience..." required="required"></textarea>
+								<input type="hidden" name="id" value="{{id}}"/>
+								<span class="field-back"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row cols-lg">
+						<div class="col-6 sm-col-3 sm-col-offs-3" data-inview-showup="showup-translate-right">
+							<button class="btn col-12 text-upper" name="sendTicket" type="submit">
+								Déposer mon avis
+							</button>
+						</div>
+						<div class="col-6 sm-col-3" data-inview-showup="showup-translate-left">
+							<button class="btn col-12 btns-bordered text-upper" type="reset">
+								Annuler
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+{% endblock %}

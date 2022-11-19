@@ -1,0 +1,399 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Mes réparations
+{% endblock %}
+
+{% block body %}
+	<section class="with-bg solid-section">
+		<div class="fix-image-wrap" data-image-src="{{asset('assets/images/parts/repairs.jpg')}}" data-parallax="scroll"></div>
+		<div class="theme-back"></div>
+		<div class="container page-info">
+			<div class="section-alt-head container-md">
+				<h1 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Mes réparations</h1>
+				<p data-inview-showup="showup-translate-left">Gardez un oeil sur vos réparations en cours dans nos ateliers</p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="container">
+			<nav class="user-dashboard-menu">
+				<ul></ul>
+			</nav>
+		</div>
+		<section class="offs-xxl">
+			<div class="container">
+				{% for flashMessage in app.session.flashbag.get('notice') %}
+
+					{{ flashMessage|raw}}
+
+				{% endfor %}
+				{% for reparation in reparations %}
+					<div class="user-tickets">
+						<div class="user-ticket" data-inview-showup="showup-translate-up">
+							<div class="item-header text-upper">
+								<div class="user-ticket-show-more">
+									<div class="user-ticket-show-more-icon">
+										<i class="fas fa-angle-double-down"></i>
+									</div>
+								</div>
+								<div class="user-ticket-number">#
+									{{ reparation.numero }}</div>
+								<div class="user-ticket-device">{{ reparation.brand }}
+									-
+									{{ reparation.model }}
+								</div>
+								<div class="user-ticket-title">{{ reparation.title }}</div>
+								<div class="user-ticket-date">{{ reparation.dateCreate|date("d-m") }}</div>
+								{% if reparation.status == 1 %}
+									<div class="pending user-ticket-status">Prise en charge</div>
+								{% else %}
+									{% if reparation.status == 2 %}
+										<div class="diagnostic user-ticket-status">Diagnostique</div>
+									{% else %}
+										{% if reparation.status == 3 %}
+											<div class="repair user-ticket-status">Réparation en cours</div>
+										{% else %}
+											{% if reparation.status == 4 %}
+												<div class="complete user-ticket-status">Terminé</div>
+											{% endif %}
+										{% endif %}
+									{% endif %}
+								{% endif %}
+							</div>
+							<div class="item-content">
+								<div class="user-ticket-info rows-sm cols-md row">
+									<div class="sm-col-4">
+										<div class="user-ticket-info-line">
+											<div class="user-ticket-info-title text-upper">Marque :&nbsp;</div>
+											<div class="user-ticket-info-value">{{reparation.brand}}</div>
+										</div>
+										<div class="user-ticket-info-line">
+											<div class="user-ticket-info-title text-upper">Modèle :&nbsp;</div>
+											<div class="user-ticket-info-value">{{reparation.model}}</div>
+										</div>
+										<div class="user-ticket-info-line">
+											<div class="user-ticket-info-title text-upper">Technicien :&nbsp;</div>
+											<div class="user-ticket-info-value">{{reparation.techos}}</div>
+										</div>
+										{% if admin != 0 %}
+											<div class="user-ticket-info-line">
+												<div class="user-ticket-info-title text-upper">Client / Mail :&nbsp;</div>
+												<div class="user-ticket-info-value">{{reparation.user.username}}
+													/
+													{{reparation.user.email}}</div>
+											</div>
+											<div class="user-ticket-info-line">
+												<div class="user-ticket-info-title text-upper" style="color: red;">Accès commande administrateur&nbsp;</div>
+											</div>
+										{% endif %}
+									</div>
+									<div class="sm-col-8">
+										<div class="user-ticket-info-line text-upper">
+											<div class="user-ticket-info-title">Problème déclaré :&nbsp;</div>
+											<div class="user-ticket-info-text">
+												<div class="user-ticket-field-like">{{reparation.problem}}</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="user-ticket-steps-wrap">
+									<h5 class="text-upper">État de votre réparation</h5>
+									{% if reparation.status == 1 %}
+										<div class="user-ticket-steps">
+											<div class="active user-ticket-step">
+												<div class="user-ticket-step-number">1.</div>
+												<div class="user-ticket-step-title">prise en charge</div>
+											</div>
+											<div class="user-ticket-step-separator">
+												<i class="fas fa-angle-double-right"></i>
+											</div>
+											<div class="user-ticket-step">
+												<div class="user-ticket-step-number">2.</div>
+												<div class="user-ticket-step-title">diagnostique</div>
+											</div>
+											<div class="user-ticket-step-separator">
+												<i class="fas fa-angle-double-right"></i>
+											</div>
+											<div class="user-ticket-step">
+												<div class="user-ticket-step-number">3.</div>
+												<div class="user-ticket-step-title">réparations&nbsp;&nbsp;&nbsp;</div>
+											</div>
+											<div class="user-ticket-step-separator">
+												<i class="fas fa-angle-double-right"></i>
+											</div>
+											<div class="user-ticket-step">
+												<div class="user-ticket-step-number">4.</div>
+												<div class="user-ticket-step-title">appareil réparé</div>
+											</div>
+										</div>
+									{% else %}
+										{% if reparation.status == 2 %}
+											<div class="user-ticket-steps">
+												<div class="user-ticket-step">
+													<div class="user-ticket-step-number">1.</div>
+													<div class="user-ticket-step-title">prise en charge</div>
+												</div>
+												<div class="user-ticket-step-separator">
+													<i class="fas fa-angle-double-right"></i>
+												</div>
+												<div class="active user-ticket-step">
+													<div class="user-ticket-step-number">2.</div>
+													<div class="user-ticket-step-title">diagnostique</div>
+												</div>
+												<div class="user-ticket-step-separator">
+													<i class="fas fa-angle-double-right"></i>
+												</div>
+												<div class="user-ticket-step">
+													<div class="user-ticket-step-number">3.</div>
+													<div class="user-ticket-step-title">réparations&nbsp;&nbsp;&nbsp;</div>
+												</div>
+												<div class="user-ticket-step-separator">
+													<i class="fas fa-angle-double-right"></i>
+												</div>
+												<div class="user-ticket-step">
+													<div class="user-ticket-step-number">4.</div>
+													<div class="user-ticket-step-title">appareil réparé</div>
+												</div>
+											</div>
+										{% else %}
+											{% if reparation.status == 3 %}
+												<div class="user-ticket-steps">
+													<div class="user-ticket-step">
+														<div class="user-ticket-step-number">1.</div>
+														<div class="user-ticket-step-title">prise en charge</div>
+													</div>
+													<div class="user-ticket-step-separator">
+														<i class="fas fa-angle-double-right"></i>
+													</div>
+													<div class="user-ticket-step">
+														<div class="user-ticket-step-number">2.</div>
+														<div class="user-ticket-step-title">diagnostique</div>
+													</div>
+													<div class="user-ticket-step-separator">
+														<i class="fas fa-angle-double-right"></i>
+													</div>
+													<div class="active user-ticket-step">
+														<div class="user-ticket-step-number">3.</div>
+														<div class="user-ticket-step-title">réparations&nbsp;&nbsp;&nbsp;</div>
+													</div>
+													<div class="user-ticket-step-separator">
+														<i class="fas fa-angle-double-right"></i>
+													</div>
+													<div class="user-ticket-step">
+														<div class="user-ticket-step-number">4.</div>
+														<div class="user-ticket-step-title">appareil réparé</div>
+													</div>
+												</div>
+											{% else %}
+												{% if reparation.status == 4 %}
+													<div class="user-ticket-steps">
+														<div class="user-ticket-step">
+															<div class="user-ticket-step-number">1.</div>
+															<div class="user-ticket-step-title">prise en charge</div>
+														</div>
+														<div class="user-ticket-step-separator">
+															<i class="fas fa-angle-double-right"></i>
+														</div>
+														<div class="user-ticket-step">
+															<div class="user-ticket-step-number">2.</div>
+															<div class="user-ticket-step-title">diagnostique</div>
+														</div>
+														<div class="user-ticket-step-separator">
+															<i class="fas fa-angle-double-right"></i>
+														</div>
+														<div class="user-ticket-step">
+															<div class="user-ticket-step-number">3.</div>
+															<div class="user-ticket-step-title">réparations&nbsp;&nbsp;&nbsp;</div>
+														</div>
+														<div class="user-ticket-step-separator">
+															<i class="fas fa-angle-double-right"></i>
+														</div>
+														<div class="active user-ticket-step">
+															<div class="user-ticket-step-number">4.</div>
+															<div class="user-ticket-step-title">appareil réparé</div>
+														</div>
+													</div>
+												{% endif %}
+											{% endif %}
+										{% endif %}
+									{% endif %}
+								</div>
+								<div class="user-ticket-summary row">
+									<div class="sm-col-7 md-col-8">
+										<div class="user-ticket-commentary">
+											{% if admin != 0 %}
+												<div class="user-ticket-commentary-title text-upper">Commentaire au client</div>
+											{% else %}
+												<div class="user-ticket-commentary-title text-upper">Commentaire du technicien</div>
+											{% endif %}
+											<div class="user-ticket-commentary-date">{{reparation.dateUpdate|date("d-m")}}
+												à
+												{{reparation.dateUpdate|date("H:m")}}</div>
+											<div class="user-ticket-commentary-text">
+												{% if (reparation.status == 4) or (reparation.status == 3) %}
+													<div class="user-ticket-field-like">{{reparation.commentary}}</div>
+												{% else %}
+													{% if admin != 0 %}
+														<div class="user-ticket-field-like">
+															<textarea class="field-control" cols="150" id="commentary" name="{{reparation.id}}">{{reparation.commentary}}</textarea>
+														</div>
+													{% else %}
+														<div class="user-ticket-field-like">{{reparation.commentary}}</div>
+													{% endif %}
+												{% endif %}
+											</div>
+										</div>
+									</div>
+									<div class="sm-col-5 md-col-4">
+										<div class="user-ticket-totals">
+											<div class="user-ticket-cost-line">
+												<div class="user-ticket-cost-title text-upper">matériel</div>
+												<div class="user-ticket-cost-value">
+													{% if (reparation.status == 4) or (reparation.status == 3) %}
+														{{reparation.priceMatos}}
+														€
+													{% else %}
+														{% if admin != 0 %}
+															<input class="field-control" style="width: 7em;" id="matos" value="{{reparation.priceMatos}}"/>
+														{% else %}
+															{{reparation.priceMatos}}
+															€
+														{% endif %}
+													{% endif %}
+												</div>
+											</div>
+											<div class="user-ticket-cost-line">
+												<div class="user-ticket-cost-title text-upper">réparation</div>
+												<div class="user-ticket-cost-value">
+													{% if (reparation.status == 4) or (reparation.status == 3) %}
+														{{reparation.price}}
+														€
+													{% else %}
+														{% if admin != 0 %}
+															<input class="field-control" style="width: 7em;" id="repair" value="{{reparation.price}}"/>
+														{% else %}
+															{{reparation.price}}
+															€
+														{% endif %}
+													{% endif %}
+												</div>
+											</div>
+											<div class="user-ticket-cost-line user-ticket-total">
+												<div class="user-ticket-cost-title text-upper">coût total</div>
+												<div class="user-ticket-cost-value">
+													{{ reparation.priceMatos + reparation.price}}
+													€
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="sm-col-12 md-col-12">
+									{% if admin != 0 %}
+										{% if reparation.status == 1 %}
+											<a class="btn btns-bordered-alt text-upper" href="/reparations/admin/change/2/{{reparation.id}}">Passer en diagnostique</a>
+											<a class="btn btns-bordered-alt text-upper" href="/reparations/admin/change/3/{{reparation.id}}">Passer en réparation</a>
+											<a class="btn btns-bordered-alt text-upper" href="/reparations/admin/change/4/{{reparation.id}}">Passer en terminé</a>
+										{% else %}
+											{% if reparation.status == 2 %}
+												<a class="btn btns-bordered-alt text-upper" href="/reparations/admin/change/3/{{reparation.id}}">Passer en réparation</a>
+												<a class="btn btns-bordered-alt text-upper" href="/reparations/admin/change/4/{{reparation.id}}">Passer en terminé</a>
+											{% else %}
+												{% if reparation.status == 3 %}
+													<a class="btn btns-bordered-alt text-upper" href="/reparations/admin/change/4/{{reparation.id}}">Passer en terminé</a>
+												{% endif %}
+											{% endif %}
+										{% endif %}
+										{% if (reparation.status != 4) or (reparation.status != 3) %}
+											<a class="btn btns-bordered-alt text-upper" onclick="savefiche()">Enregistrer la fiche</a>
+										{% endif %}
+									{% endif %}
+									{% if tickets is empty %}
+										<a class="btn btns-bordered-alt text-upper" href="/new/ticket/{{reparation.id}}">Ouvrir un ticket pour cette réparation</a>
+									{% else %}
+										{% for ticket in tickets %}
+											{% if ticket.reparations == reparation.id %}
+												<a class="btn btns-bordered-alt text-upper" href="/tickets/{{ticket.id}}">Ouvrir le ticket associé à cette réparation</a>
+											{% else %}
+												{% if admin == 0 %}
+													<a class="btn btns-bordered-alt text-upper" href="/new/ticket/{{reparation.id}}">Ouvrir un ticket pour cette réparation</a>
+												{% endif %}
+											{% endif %}
+										{% endfor %}
+									{% endif %}
+									{% if reparation.status == 4 %}
+										<a class="btn btns-bordered-alt text-upper" target="_blank" href="facture/{{reparation.id}}">Voir la facture associée à cette réparation</a>
+										{% if avis is empty %}
+											<a class="btn btns-bordered-alt text-upper" href="/avis/{{reparation.id}}">Laisser un avis pour cette réparation</a>
+										{% endif %}
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</section>
+			<script>
+				function savefiche() {
+
+
+var commentary = $('textarea#commentary').val();
+var matos = $('#matos').val();
+var repair = $('#repair').val();
+var id = $('textarea#commentary').attr('name');
+console.log(id);
+let timerInterval
+Swal.fire({
+title: 'Enregistrement en cours',
+timer: 10000000,
+timerProgressBar: true,
+didOpen: () => {
+Swal.showLoading()
+timerInterval = setInterval(() => {
+const content = Swal.getContent()
+if (content) {
+const b = content.querySelector('b')
+if (b) {
+b.textContent = Swal.getTimerLeft()
+}
+}
+}, 100)
+},
+willClose: () => {
+clearInterval(timerInterval)
+}
+}).then((result) => { /* Read more about handling dismissals below */
+if (result.dismiss === Swal.DismissReason.timer) {}
+})
+
+
+$.ajax({
+url: '/reparations/admin/edit',
+type: 'POST',
+data: 'id=' + id + '&commentary=' + commentary + '&matos=' + matos + '&repair=' + repair,
+success: function (code_html, statut) {
+Swal.fire({
+position: 'top-end',
+icon: 'success',
+title: 'Enregistrement effectué',
+showConfirmButton: true,
+timer: 1500
+})
+location.reload();
+},
+
+error: function (resultat, statut, erreur) {
+Swal.fire({
+position: 'top-end',
+icon: 'error',
+title: 'Enregistrement échoué',
+showConfirmButton: true,
+timer: 1500
+})
+}
+
+});
+}
+			</script>
+		{% endblock %}

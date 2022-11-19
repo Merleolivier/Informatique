@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Ajouter un client
+{% endblock %}
+
+{% block body %}
+	<section class="shift-xl content-section">
+		<div class="container">
+			<div class="section-head text-center container-md">
+				<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Ajouter un client</h2>
+				<p data-inview-showup="showup-translate-left">
+					<b>Accès administrateur</b>
+				</p>
+			</div>
+			<div class="medium-container">
+				<form class="new-ticket" method="post" action="/clients/create/send">
+					<div class="offs-lg" data-inview-showup="showup-translate-bottom">
+						<h4 class="text-upper" data-inview-showup="showup-translate-right">Informations de l'utilisateur</h4>
+						<div class="row cols-lg rows-md">
+							<div class="sm-col-6" data-inview-showup="showup-translate-right">
+								<div class="field-group">
+									<div class="field-wrap">
+										<input class="field-control" name="prenom" placeholder="Prénom de l'utilisateur" required="required"/>
+										<span class="field-back"></span>
+									</div>
+								</div>
+							</div>
+							<div class="sm-col-6" data-inview-showup="showup-translate-left">
+								<div class="field-group">
+									<div class="field-wrap">
+										<input class="field-control" name="nom" placeholder="Nom de l'utilisateur" required="required"/>
+										<span class="field-back"></span>
+									</div>
+								</div>
+							</div>
+							<div class="sm-col-12" data-inview-showup="showup-translate-right">
+								<div class="field-group">
+									<div class="field-wrap">
+										<input class="field-control" name="email" type="email" placeholder="Email de l'utilisateur" required="required"/>
+										<span class="field-back"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<h4 class="text-upper" data-inview-showup="showup-translate-right">Informations sur la commande</h4>
+					<div class="offs-lg" data-inview-showup="showup-translate-bottom">
+						<div class="row cols-lg rows-md">
+							<div class="sm-col-6" data-inview-showup="showup-translate-right">
+								<div class="field-group">
+									<div class="field-wrap">
+										<input class="field-control" name="marque" placeholder="Marque de l'appareil"/>
+										<span class="field-back"></span>
+									</div>
+								</div>
+							</div>
+							<div class="sm-col-6" data-inview-showup="showup-translate-left">
+								<div class="field-group">
+									<div class="field-wrap">
+										<input class="field-control" name="modele" placeholder="Modèle de l'appareil"/>
+										<span class="field-back"></span>
+									</div>
+								</div>
+							</div>
+							<div class="sm-col-12" data-inview-showup="showup-translate-left">
+								<div class="field-group">
+									<div class="field-wrap">
+										<input class="field-control" name="title" placeholder="Titre de la réparation"/>
+										<span class="field-back"></span>
+									</div>
+								</div>
+							</div>
+							<div class="sm-col-12" data-inview-showup="showup-translate-right">
+								<div class="field-group">
+									<div class="field-wrap">
+										<textarea class="field-control" name="probleme" placeholder="Problème de base"></textarea>
+										<span class="field-back"></span>
+									</div>
+								</div>
+							</div>
+							<div class="sm-col-6" data-inview-showup="showup-translate-left">
+								<div class="field-group">
+									<div class="field-wrap">
+										<input class="field-control" name="prix" placeholder="Prix prévu (ex: 40)"/>
+										<span class="field-back"></span>
+									</div>
+								</div>
+							</div>
+							<div class="sm-col-6" data-inview-showup="showup-translate-left">
+								<div class="field-group">
+									<div class="field-wrap">
+										<input class="field-control" placeholder="Technicien : Olivier" disabled/>
+										<span class="field-back"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row cols-lg">
+						<div class="col-6 sm-col-3 sm-col-offs-3" data-inview-showup="showup-translate-right">
+							<button class="btn col-12 text-upper" name="sendTicket" type="submit">
+								Ajouter
+							</button>
+						</div>
+						<div class="col-6 sm-col-3" data-inview-showup="showup-translate-left">
+							<button class="btn col-12 btns-bordered text-upper" type="reset">
+								Annuler
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+{% endblock %}

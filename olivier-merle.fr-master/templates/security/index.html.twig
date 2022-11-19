@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion client
+{% endblock %}
+
+{% block body %}
+	<section class="with-bg solid-section">
+		<div class="fix-image-wrap" data-image-src="{{asset('assets/images/parts/loginClient.jpg')}}" data-parallax="scroll"></div>
+		<div class="theme-back"></div>
+		<div class="container page-info">
+			<div class="section-alt-head container-md">
+				<h1 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Connexion client</h1>
+				<p data-inview-showup="showup-translate-left">Accédez au suivi de votre dossier</p>
+				{% if app.user %}
+					<div class="mb-3">
+						You are logged in as
+						{{ app.user.username }},
+						<a href="{{ path('app_logout') }}">Logout</a>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+	<section class="content-section">
+		<div class="container">
+			<div class="section-head text-center container-md">
+				<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Connexion</h2>
+				<p data-inview-showup="showup-translate-left">Connectez-vous et accédez au suivi total de votre dossier, devis et factures.</p>
+			</div>
+			<form method="post" class="sign-in-form">
+				<div class="medium-container">
+					<div class="row rows-lg cols-lg rows-lg">
+						<div class="sm-col-12">
+							{% if error %}
+								<div class="alert alert-error">
+									<strong>
+										<i class="fas fa-times"></i>
+										Erreur :</strong>
+									{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+							{% endif %}
+							<div class="item-form" data-inview-showup="showup-translate-right">
+								<div class="offs-lg">
+									<div class="field-group">
+										<div class="field-wrap">
+											<input class="field-control" value="{{ last_username }}" name="username" placeholder="Votre identifiant de connexion" required="required"/>
+											<span class="field-back"></span>
+										</div>
+									</div>
+									<div class="field-group">
+										<div class="field-wrap">
+											<input class="field-control" name="password" type="password" placeholder="Mot de passe" required="required"/>
+											<span class="field-back"></span>
+										</div>
+									</div>
+									<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+								</div>
+								<div class="row cols-md offs-md">
+									<div class="col-12">
+										<div class="field-group">
+											<div class="checkbox">
+												<label>
+													<input class="field-control" name="keepLogged" type="checkbox"/>
+													<span class="check-icon">
+														<span class="check-block">
+															<span class="check-pin"></span>
+														</span>
+													</span>
+													<span class="label">Restez connecter</span>
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 text-right shift-xs">
+										<a href="./forgot-password.html">Mot de passe oublié ?</a>
+									</div>
+								</div>
+								<div class="text-right">
+									<button class="btn text-upper" type="submit">
+										Me connecter
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+	{% endblock %}

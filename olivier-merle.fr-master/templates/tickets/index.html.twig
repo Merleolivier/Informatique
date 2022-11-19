@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Mes réparations
+{% endblock %}
+
+{% block body %}
+	<section class="with-bg solid-section">
+		<div class="fix-image-wrap" data-image-src="{{asset('/assets/images/parts/serviceIMG.jpg')}}" data-parallax="scroll"></div>
+		<div class="theme-back"></div>
+		<div class="container page-info">
+			<div class="section-alt-head container-md">
+				<h1 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Visualiser mon ticket</h1>
+				<p data-inview-showup="showup-translate-left">{{ticket.subject}}
+					-
+					{{reparation.brand}}
+					{{reparation.model}}</p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<section class="offs-xxl">
+			<div class="container">
+				{% for flashMessage in app.session.flashbag.get('notice') %}
+
+					{{ flashMessage|raw}}
+
+				{% endfor %}
+				<div class="user-tickets">
+					<div class="user-ticket" data-inview-showup="showup-translate-up">
+						<div class="user-ticket-summary row">
+							<div class="sm-col-12 md-col-12">
+								{% for response in responses %}
+									{% if response.user == app.user.id %}
+										{% set user = 'Vous' %}
+									{% else %}
+										{% set user = 'Technicien' %}
+									{% endif %}
+									<div class="user-ticket-commentary">
+										<div class="user-ticket-commentary-title text-upper">{{ user }}</div>
+										<div class="user-ticket-commentary-date">{{response.sendDate|date("d-m")}}
+											à
+											{{response.sendDate|date("H:i:s")}}</div>
+										<div class="user-ticket-commentary-text">
+											<div class="user-ticket-field-like">{{response.message}}</div>
+										</div>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+					<form method="post" action="/ticket/message/add" class="md-col-12" data-inview-showup="showup-translate-down">
+						<div class="field-group">
+							{% for flashMessage in app.session.flashbag.get('notice') %}
+
+								{{ flashMessage|raw}}
+
+							{% endfor %}
+						</div>
+						<div class="field-group">
+							<div class="field-wrap">
+								<textarea class="field-control" name="message" placeholder="Écrivez votre réponse..."></textarea>
+								<input type="hidden" name="id" value="{{ticket.id}}"/>
+								<span class="field-back"></span>
+							</div>
+						</div>
+						<div class="btn-block">
+							<button class="btn text-upper ajax-disabled" type="submit">
+								Répondre au ticket
+							</button>
+						</div>
+					</form>
+				</div>
+			</section>
+			<br/>
+		{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos prestations
+{% endblock %}
+
+{% block body %}
+	<section class="content-section">
+		<div class="container">
+			<div class="shuffle-js">
+				<div class="row cols-md rows-md shuffle-items">
+					{% for dataService in services %}
+						<div class="shuffle-item col-12 md-col-4 sm-col-6">
+							<div class="item muted-bg" data-inview-showup="showup-scale">
+								<a href="/contact" class="block-link">
+									<span class="image-wrap"><img class="image" src="{{dataService.img}}" alt=""/></span>
+									<span class="hover">
+										<span class="hover-show">
+											<span class="back"></span>
+											<span class="content">
+												<i class="fas fa-search" aria-hidden="true"></i>
+											</span>
+										</span>
+									</span>
+								</a>
+								<div class="item-content">
+									<div class="item-title text-upper">
+										<a href="/contact">{{ dataService.title }}</a>
+									</div>
+									<div class="item-text">{{dataService.description}}</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="shuffle-empty text-center alt-color text-lg">Aucun service trouvé</div>
+			</div>
+		</div>
+	</section>
+	<section class="muted-bg solid-section">
+		<div class="container">
+			<div class="section-head text-center container-md">
+				<h2 class="section-title text-upper text-lg" data-inview-showup="showup-translate-right">Vous ne trouvez pas votre problème ?</h2>
+				<p data-inview-showup="showup-translate-left">Contactez-nous et décrivez le nous :)</p>
+			</div>
+			<form class="md-col-8 md-col-offs-2" action="contact/send" method="post" data-inview-showup="showup-translate-down">
+				<div class="field-group">
+					<div class="field-wrap">
+						<input class="field-control" name="name" placeholder="Nom & Prénom" required="required"/>
+						<span class="field-back"></span>
+					</div>
+				</div>
+				<div class="field-group">
+					<div class="field-wrap">
+						<input class="field-control" name="email" type="email" placeholder="Email" required="required"/>
+						<span class="field-back"></span>
+					</div>
+				</div>
+				<div class="field-group">
+					<div class="field-wrap">
+						<input class="field-control" name="telephone" placeholder="Numéro de téléphone" required="required"/>
+						<span class="field-back"></span>
+					</div>
+				</div>
+				<div class="field-group">
+					<div class="field-wrap">
+						<textarea class="field-control" name="message" placeholder="Décrivez votre problème..." required="required"></textarea>
+						<span class="field-back"></span>
+					</div>
+				</div>
+				<div class="btn-block text-center">
+					<button class="btn sm-col-3 text-upper" type="submit">
+						Envoyer
+					</button>
+					<div class="btn-text text-sm sides-lg text-center">ou appelez
+						<span class="alt-color">(+33) 7 56 84 24 42</span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+{% endblock %}
